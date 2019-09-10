@@ -1,17 +1,20 @@
-import React from "react";
+import React, { Component } from "react";
 
-const Logo = props => {
-  return (
-    <header>
-      <div>
-        <h1>Welcome to the {props.appName}</h1>
-        <img
-          src="https://assets.pokemon.com/assets/cms2/img/pokedex/full/016.png"
-          alt=""
-        ></img>
-      </div>
-    </header>
-  );
-};
+class Logo extends Component {
+  
+  render() {
+    return (
+      <header>
+        <div>
+          <h1>Welcome to the {this.props.appName}</h1>
+          <img onClick = {this.props.handleClick}
+            src="https://assets.pokemon.com/assets/cms2/img/pokedex/full/016.png"
+            alt=""
+          ></img>
+        </div>
+      </header>
+    );
+  }
+}
 
 export default Logo;
