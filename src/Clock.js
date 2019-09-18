@@ -44,7 +44,7 @@ class Clock extends Component {
     return (
       <div>
         {this.state.isShowingClock && <Time />}
-        <button onClick={this.toggle}>Toggle time</button>
+        <button className="button" onClick={this.toggle}>Toggle time</button>
       </div>
     );
   }

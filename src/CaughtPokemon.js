@@ -3,38 +3,28 @@ import React, { Component } from "react";
 class CaughtPokemon extends Component {
   constructor(props) {
     super(props);
-    this.state = { 
+    this.state = {
       pokemonNameInput: "",
       caughtPokemon: []
     };
-    this.satate1 = { menssage: console.log('constructor') };
-  }
-/* 
-  componentDidMount = () => {
-    console.log('componentDidMount');
   }
 
-  componentDidUpdate = () => {
-    console.log('componentDidUpdate');
-  }
-  
-  componentWillUnmoun = () => {
-    console.log('componentWillUnmoun ');
-  } */
-
-  handleInputChange = event =>{
+  handleInputChange = event => {
     console.log(event.target.value);
     this.setState({
       pokemonNameInput: event.target.value
-    })
-    
-  }
+    });
+  };
 
   catchPokemon = () => {
-    let newCaughtPokemon = this.state.CaughtPokemon.push(this.state.pokemonNameInput);
-    this.setState({
-      caughtPokemon: newCaughtPokemon
-    });
+    console.log(this.state.caughtPokemon);
+    if (this.state.pokemonNameInput !== "") {
+      this.state.caughtPokemon.push(this.state.pokemonNameInput);
+      this.setState({
+        caughtPokemon: this.state.caughtPokemon,
+        pokemonNameInput: ""
+      });
+    }
   };
 
   render() {
@@ -43,8 +33,21 @@ class CaughtPokemon extends Component {
         <p>
           Caught {this.state.caughtPokemon.length} Pokemon on {this.props.date}
         </p>
-        <input type = "text" value = {this.state.pokemonNameInput}  onChange= {this.handleInputChange}/>
-        <button onClick={this.catchPokemon}>Catch Pokemon</button>
+        <div className="imput"> 
+          <input
+            type="text"
+            value={this.state.pokemonNameInput}
+            onChange={this.handleInputChange}
+          />
+          <button className="button" onClick={this.catchPokemon}>
+            Catch Pokemon
+          </button>
+        </div>
+        <ul>
+          {this.state.caughtPokemon.map(name => (
+            <li> {name} </li>
+          ))}
+        </ul>
       </div>
     );
   }
